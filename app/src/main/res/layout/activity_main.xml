@@ -48,7 +48,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="X"
-                    android:textSize="24sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/gyroX"
@@ -56,20 +56,14 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text=""
-                    android:textSize="24sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/titleGyroY"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Y"
-                    android:textSize="24sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/gyroY"
@@ -77,20 +71,14 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text=""
-                    android:textSize="24sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/titleGyroZ"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Z"
-                    android:textSize="24sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/gyroZ"
@@ -98,7 +86,27 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text=""
-                    android:textSize="24sp" />
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/normalAngularAcceleration "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Normal angular acceleration "
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="14sp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -141,55 +149,64 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="X"
-                    android:textSize="24sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/acceleroX"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="24sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/titleAcceleroY"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Y"
-                    android:textSize="24sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/acceleroY"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="24sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/titleAcceleroZ"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Z"
-                    android:textSize="24sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/acceleroZ"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="24sp" />
+                    android:textSize="14sp" />
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/normalLinearAcceleration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Normal linear acceleration"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
         </LinearLayout>
 
         <com.jjoe64.graphview.GraphView
@@ -205,13 +222,25 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/gpsTitle"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="GPS position"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/gpsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GPS position"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <Switch
+                android:id="@+id/switchGps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -222,13 +251,29 @@
                 android:id="@+id/latitude"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Latitude" />
+                android:text="Latitude"
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/latitudeValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/longitude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Longitude"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/longitudeValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="14sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -237,16 +282,38 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/longitude"
+                android:id="@+id/textView11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Longitude" />
+                android:text="Speed"
+                android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/longitudeValue"
+                android:id="@+id/speed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/gpsAccuracy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Accuracy"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="14sp" />
         </LinearLayout>
 
     </LinearLayout>

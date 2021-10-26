@@ -62,11 +62,11 @@ public class MainActivity extends AppCompatActivity {
         acceleroZ = findViewById(R.id.acceleroZ);
         latitude = findViewById(R.id.latitudeValue);
         longitude = findViewById(R.id.longitudeValue);
-        accuracy = findViewById(R.id.gpsAccuracy);
+        accuracy = findViewById(R.id.gpsAccuracyValue);
         switchGps = findViewById(R.id.switchGps);
         speed = findViewById(R.id.speed);
-        normalLinearAcceleration = findViewById(R.id.normalLinearAcceleration);
-        normalAngularAcceleration = findViewById(R.id.normalAngularAcceleration);
+        normalLinearAcceleration = findViewById(R.id.normalLinearAccelValue);
+        normalAngularAcceleration = findViewById(R.id.normalAngularAccelValue);
 
         // SENSORS
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onLocationResult(@NonNull LocationResult locationResult) {
                 super.onLocationResult(locationResult);
-                updateUI(locationResult.getLastLocation());
+                updateGpsUI(locationResult.getLastLocation());
             }
         };
 
@@ -108,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void stopLocationUpdate() {
+        updateGpsUI(null);
         fusedLocationProviderClient.removeLocationUpdates(locationCallback);
     }
 
@@ -202,7 +203,11 @@ public class MainActivity extends AppCompatActivity {
             fusedLocationProviderClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
                 @Override
                 public void onSuccess(Location location) {
-                    updateUI(location);
+                    if (switchGps.isChecked()) {
+                        updateGpsUI(location);
+                    } else {
+                        updateGpsUI(null);
+                    }
                 }
             });
         } else {
@@ -225,13 +230,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void updateUI(Location location) {
-        latitude.setText(String.valueOf(location.getLatitude()));
-        longitude.setText(String.valueOf(location.getLongitude()));
-        speed.setText(String.valueOf(location.getSpeed()));
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-             speed.append(" +/- " + location.getSpeedAccuracyMetersPerSecond() + "m/s²");
+    private void updateGpsUI(Location location) {
+        if (location != null) {
+            latitude.setText(String.valueOf(location.getLatitude()));
+            longitude.setText(String.valueOf(location.getLongitude()));
+            speed.setText(String.valueOf(location.getSpeed()));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                speed.append(" +/- " + location.getSpeedAccuracyMetersPerSecond() + "m/s²");
+            }
+            accuracy.setText(String.valueOf(location.getAccuracy()));
+        } else {
+            latitude.setText("-");
+            longitude.setText("-");
+            speed.setText("-");
+            accuracy.setText("-");
         }
-        accuracy.setText(String.valueOf(location.getAccuracy()));
     }
 }
